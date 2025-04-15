@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: 891612581930.dkr.ecr.us-east-1.amazonaws.com/capstone-ecr-dev
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30036 # optional: pick a port from the NodePort range (30000–32767)
+
+resources: {}
