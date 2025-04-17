@@ -8,6 +8,21 @@ image:
 service:
   type: NodePort
   port: 8080
-  nodePort: 30036 # optional: pick a port from the NodePort range (30000–32767)
+  nodePort: 30036
 
-resources: {}
+ingress:
+  enabled: true
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz
+  paths: 
+    - /capstoneapp
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
